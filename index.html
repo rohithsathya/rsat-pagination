@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <link rel="import" href="rsat-pagination.html" />
+</head>
+
+<body style="padding:20px">
+    
+    <h3>Pagination Example</h3>
+    <rsat-pagination totalCount="1000" rpp="10" currentPage="1" theme="#3f51b5" id="paginationEle"></rsat-pagination>
+    <script>
+        document.getElementById("paginationEle").addEventListener("pageChange", function (e) {
+
+            alert("Page Number "+e.currentPage+" is selected");
+
+        });
+    </script>
+
+</body>
+
+</html>
