@@ -1,0 +1,19 @@
+{
+  "name": "rsat-pagination",
+  "version": "1.0.0",
+  "description": "pagination component for webpages built on web components standards",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohithsathya/rsat-pagination.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rohithsathya/rsat-pagination/issues"
+  },
+  "homepage": "https://github.com/rohithsathya/rsat-pagination#readme"
+}
