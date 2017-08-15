@@ -5,8 +5,8 @@
 
 ## Demo
 
-#### [Web Component Edition](https://rohithsathya.github.io/Examples/WCExample.html)
-#### [Angular JS Edition](https://rohithsathya.github.io/Examples/AJExample.html)
+#### [Web Component Edition](https://rohithsathya.github.io/rsat-pagination/Examples/WCExample.html)
+#### [Angular JS Edition](https://rohithsathya.github.io/rsat-pagination/AJExample.html)
 
 ## Install
 
