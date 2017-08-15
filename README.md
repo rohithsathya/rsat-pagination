@@ -1,11 +1,11 @@
 # &lt;rsat-pagination&gt;
 
 `<rsat-pagination>` Is a pagination component based on web component v1 standards and also have support for Angular js.
-
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/rohithsathya/rsat-pagination)
 ## Demo
 
-### [Web Component Edition](https://rohithsathya.github.io/Examples/WCExample.html)
-### [Angular JS Edition](https://rohithsathya.github.io/Examples/AJExample.html)
+#### [Web Component Edition](https://rohithsathya.github.io/Examples/WCExample.html)
+#### [Angular JS Edition](https://rohithsathya.github.io/Examples/AJExample.html)
 
 ## Install
 
@@ -36,14 +36,13 @@ Or [download as ZIP](https://github.com/rohithsathya/rsat-pagination/archive/mas
 
 	```html
 	<rsat-pagination totalCount="1000" rpp="10" currentPage="1" theme="#3f51b5" id="paginationEle"></rsat-pagination>
-    <!--register for page change Event-->
-    <script>
-         document.getElementById("paginationEle").addEventListener("pageChange", function (e) {
+	```
+    ```js
+        //register for page change Event
+        document.getElementById("paginationEle").addEventListener("pageChange", function (e) {
              console.log("Current Page " + e.currentPage)
         });
-    </script>
-
-	```
+    ```
 ### AngularJs Edition
 
 1. Add reference to rsat-pagination file:
@@ -69,7 +68,12 @@ Or [download as ZIP](https://github.com/rohithsathya/rsat-pagination/archive/mas
             }]);
      </script>
 
-    <rsat-pagination totalCount="totalRecordsCount" rpp="recordsPerPage" currentPage="currentPage" theme="theme" pagechange="pagechanged(pageNumber)"></rsat-pagination>
+    <rsat-pagination totalCount="totalRecordsCount" 
+                    rpp="recordsPerPage" 
+                    currentPage="currentPage" 
+                    theme="theme" 
+                    pagechange="pagechanged(pageNumber)">
+    </rsat-pagination>
     ```
 #### options
 | Options       | Explanation  | Type   |
