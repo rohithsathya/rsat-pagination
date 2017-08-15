@@ -1,7 +1,8 @@
-# &lt;rsat-pagination&gt;
-
-`<rsat-pagination>` Is a pagination component based on web component v1 standards and also have support for Angular js.
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/rohithsathya/rsat-pagination)
+
+# &lt;rsat-pagination&gt;
+`<rsat-pagination>` Is a pagination component based on web component v1 standards and also have support for Angular js.
+
 ## Demo
 
 #### [Web Component Edition](https://rohithsathya.github.io/Examples/WCExample.html)
@@ -35,12 +36,17 @@ Or [download as ZIP](https://github.com/rohithsathya/rsat-pagination/archive/mas
 3. Start using it!
 
 	```html
-	<rsat-pagination totalCount="1000" rpp="10" currentPage="1" theme="#3f51b5" id="paginationEle"></rsat-pagination>
+	<rsat-pagination totalCount="1000" 
+                    rpp="10" 
+                    currentPage="1" 
+                    theme="#3f51b5" 
+                    id="paginationEle">
+    </rsat-pagination>
 	```
     ```js
         //register for page change Event
         document.getElementById("paginationEle").addEventListener("pageChange", function (e) {
-             console.log("Current Page " + e.currentPage)
+             console.log("Current Page " + e.currentPage);
         });
     ```
 ### AngularJs Edition
@@ -58,22 +64,25 @@ Or [download as ZIP](https://github.com/rohithsathya/rsat-pagination/archive/mas
 	```
 3. Start using it!
      ```html
-     <script>
-             var app = angular.module('myApp', ['rsat-pagination']);
-                app.controller('myCtrl', ['$scope', function ($scope) {
-                $scope.totalRecordsCount = 26;
-                $scope.recordsPerPage = 3;
-                $scope.currentPage = 1;
-                $scope.theme = "#3f51b5";
-            }]);
-     </script>
-
     <rsat-pagination totalCount="totalRecordsCount" 
                     rpp="recordsPerPage" 
                     currentPage="currentPage" 
                     theme="theme" 
                     pagechange="pagechanged(pageNumber)">
     </rsat-pagination>
+    ```
+    ```js
+    //options binding
+     var app = angular.module('myApp', ['rsat-pagination']);
+                app.controller('myCtrl', ['$scope', function ($scope) {
+                $scope.totalRecordsCount = 26;
+                $scope.recordsPerPage = 3;
+                $scope.currentPage = 1;
+                $scope.theme = "#3f51b5";
+                $scope.pagechanged = function(pageNumber){
+                    console.log("Current Page " + pageNumber)
+                }
+            }]);
     ```
 #### options
 | Options       | Explanation  | Type   |
