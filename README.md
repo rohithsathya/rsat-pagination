@@ -1,16 +1,11 @@
-## rsat-pagination
-Work in progress
-[Demo](https://rohithsathya.github.io/rsat-pagination/)
-
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/rohithsathya/rsat-pagination)
-
 # &lt;rsat-pagination&gt;
 
 `<rsat-pagination>` Is a pagination component based on web component v1 standards and also have support for Angular js.
 
 ## Demo
 
-## [LIVE DEMO](https://rohithsathya.github.io/rsat-popup/example.html)
+### [Web Component Edition](https://rohithsathya.github.io/Examples/WCExample.html)
+### [Angular JS Edition](https://rohithsathya.github.io/Examples/AJExample.html)
 
 ## Install
 
