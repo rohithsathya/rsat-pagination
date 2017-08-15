@@ -84,7 +84,7 @@ Or [download as ZIP](https://github.com/rohithsathya/rsat-pagination/archive/mas
                 }
             }]);
     ```
-#### options
+## options
 | Options       | Explanation  | Type   |
 | ------------- | ------------- |------------- |
 | totalCount    |defines the total count of records |only Numbers|
