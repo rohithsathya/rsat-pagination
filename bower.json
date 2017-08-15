@@ -1,0 +1,31 @@
+{
+  "name": "rsat-pagination",
+  "description": "pagination component for webpages built on web components standards and angular js",
+  "main": "index.js",
+  "authors": [
+    "getrohith.sathya@gmail.com"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "pagination",
+    "webcomponent",
+    "angular",
+    "js",
+    "angularjs",
+    "component",
+    "pagination",
+    "component",
+    "tablepagination",
+    "table"
+  ],
+  "homepage": "https://github.com/rohithsathya/rsat-pagination",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "AngularJsEdition",
+    "WebComponentEdition"
+  ]
+}

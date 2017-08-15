@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="../dist/rsat-pagination-aj.js"></script>
+    
+    
+    <script>
+        var app = angular.module('myApp', ['rsat-pagination']);
+        app.controller('myCtrl', ['$scope', function ($scope) {
+            $scope.G = "PHmG123DG1233...!!!";
+            $scope.moviesDB = [
+                {"name":"Dunkirk ","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BN2YyZjQ0NTEtNzU5MS00NGZkLTg0MTEtYzJmMWY3MWRhZjM2XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"The Dark Tower ","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMTU3MjUwMzQ3MF5BMl5BanBnXkFtZTgwMjcwNjkxMjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Mother! ","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMzc5ODExODE0MV5BMl5BanBnXkFtZTgwNDkzNDUxMzI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"It","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMTc2MDkwNDU4NV5BMl5BanBnXkFtZTgwMjMxMzY5MjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Guardians of the Galaxy Vol. 2","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"The Emoji Movie","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMTkzMzM3OTM2Ml5BMl5BanBnXkFtZTgwMDM0NDU3MjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Atomic Blonde","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMjM5NDYzMzg5N15BMl5BanBnXkFtZTgwOTM2NDU1MjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Leatherface ","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMTEyMTIwNzg1NjNeQTJeQWpwZ15BbWU4MDkwMTQ4MDMy._V1_UY98_CR1,0,67,98_AL_.jpg"},
+                {"name":"Annabelle: Creation","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MzIwMjMxNF5BMl5BanBnXkFtZTgwMDQ3NTc2MjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":" Spider-Man: Homecoming","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BNTk4ODQ1MzgzNl5BMl5BanBnXkFtZTgwMTMyMzM4MTI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Baby Driver","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3MjQ1MzkxNl5BMl5BanBnXkFtZTgwODk1ODgyMjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"War for the Planet of the Apes","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BOGIxMjIxNDYtOGU5Ny00OWE5LWEwMjEtY2U5NTE0YzY4YTUyXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Alien: Covenant ","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BNzI5MzM3MzkxNF5BMl5BanBnXkFtZTgwOTkyMjI4MTI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"The Glass Castle","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMTY2Nzk0MDE3Nl5BMl5BanBnXkFtZTgwOTI0ODc0MjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"King Arthur: Legend of the Sword","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3ODY3Njc5Ml5BMl5BanBnXkFtZTgwMjQ5NjM5MTI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Detroit","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMTg4MDk4MTUxMF5BMl5BanBnXkFtZTgwNDE5NjA5MjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Girls Trip","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMjMwNTEzODUwMV5BMl5BanBnXkFtZTgwNjE5NjA5MjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Justice League","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMjI2NjI2MDQ0NV5BMl5BanBnXkFtZTgwMTc1MjAwMjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Thor: Ragnarok","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNDkzMzI1OF5BMl5BanBnXkFtZTgwODcxODg5MjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Wonder Woman ","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BNDFmZjgyMTEtYTk5MC00NmY0LWJhZjktOWY2MzI5YjkzODNlXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Star Wars: The Last Jedi","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BOTE5NzYyNjM0Ml5BMl5BanBnXkFtZTgwNjk4MDIwMjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Shot Caller","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMGY0YTM3MjItZmExMy00NDgyLThjNzUtZWQ1MzY2NGRmMjZhXkEyXkFqcGdeQXVyMzYyMzE1NjA@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Logan Lucky","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMTYyODg0NDU1OV5BMl5BanBnXkFtZTgwNjcxMzU0MjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"The Mummy","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BODg1NTIxMzEtM2NmMi00MDQ2LWE5YjYtZTgxYmNhZTQxYWIzXkEyXkFqcGdeQXVyNDYzODU1ODM@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+                {"name":"Jab Harry met Sejal","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMjIzMDI2NDUwOV5BMl5BanBnXkFtZTgwNzE2NjU3MjI@._V1_UY98_CR0,0,67,98_AL_.jpg"},
+                {"name":"Goodbye Christopher Robin","img":"https://images-na.ssl-images-amazon.com/images/M/MV5BMjE2MTUzMDQzNF5BMl5BanBnXkFtZTgwMDYxMDQ1MjI@._V1_UX67_CR0,0,67,98_AL_.jpg"},
+            ];
+            $scope.displayData = [];
+
+            $scope.totalRecordsCount = $scope.moviesDB.length;
+            $scope.recordsPerPage = 3;
+            $scope.currentPage = 1;
+            $scope.theme = "#3f51b5";
+
+            $scope.pagechanged = function(pageNumber){
+                $scope.currentPage = pageNumber;
+                var skip = ($scope.currentPage-1) * $scope.recordsPerPage;
+                $scope.displayData =  $scope.getMovies(skip,$scope.recordsPerPage);
+            }
+
+            //support methods
+            $scope.getMovies=function(skip,limit){
+                return $scope.moviesDB.slice(skip,skip+limit);
+            }
+           
+
+
+        }]);
+
+    </script>
+</head>
+<style>
+    body{
+        padding:20px
+    }
+    .container{
+        width:100%;
+        float:left;
+    }
+    .album-container{
+        float:left;
+        text-align:center;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+        border-radius: 5px; 
+        margin:5px
+    }
+    .album-img{
+        height:150px;
+        width:150px;
+        padding:10px
+    }
+    .album-text{
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align:center;
+        padding: 10px;
+        margin: 0px;
+    }
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <div class="container">
+            <div class="album-container" ng-repeat="movie in displayData">
+                    <img ng-src="{{movie.img}}" class="album-img">
+                    <p class="album-text">{{movie.name}}</p>
+                </div>
+    </div>
+
+    <rsat-pagination style="padding-top:30px" totalCount="totalRecordsCount" rpp="recordsPerPage" currentPage="currentPage" theme="theme" pagechange="pagechanged(pageNumber)"></rsat-pagination>
+
+
+</body>
+
+</html>

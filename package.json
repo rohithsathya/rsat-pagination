@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/rohithsathya/rsat-pagination/issues"
   },
-  "homepage": "https://github.com/rohithsathya/rsat-pagination#readme"
+  "homepage": "https://github.com/rohithsathya/rsat-pagination#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "gulp-minify": "^1.0.0"
+  }
 }

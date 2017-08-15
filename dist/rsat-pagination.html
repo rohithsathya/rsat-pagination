@@ -1,0 +1,222 @@
+<template id="rsat-popup-template">
+        <style>
+            .pagenodes {
+                float: left;
+                padding: 10px;
+                float: left;
+                padding: 10px;
+                height: 45px;
+                width: 45px;
+                border-radius: 50%;
+                background-color: white;
+                border-width: 0;
+                margin: 3px;
+                font-size: 14px;
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+                outline: none;
+                cursor: pointer;
+            }
+
+            .pagenodes:disabled,
+            .pagenodesbutton[disabled] {
+                /* background: #3f51b5; */
+                color: #fff;
+                cursor: not-allowed;
+            }
+            .dotnode{
+                float: left;
+                padding: 10px;
+                float: left;
+                padding: 10px;
+            }
+        </style>
+        <h3>PHmG123DG1233...!!!</h3>
+    </template>
+    <script>
+        var currentScript = document.currentScript;
+        class rsatPagination extends HTMLElement {
+            get totalCount() {
+                return this.getAttribute('totalCount')
+            }
+            set totalCount(val) {
+                if (val != null) {
+                    this.setAttribute('totalCount', val);
+                }
+            }
+            get rpp() {
+                return this.getAttribute('rpp')
+            }
+            set rpp(val) {
+                if (val != null) {
+                    this.setAttribute('rpp', val);
+                }
+            }
+            get currentPage() {
+                return this.getAttribute('currentPage')
+            }
+            set currentPage(val) {
+                if (val != null) {
+                    this.setAttribute('currentPage', val);
+                }
+            }
+            get theme() {
+                return this.getAttribute('theme')
+            }
+            set theme(val) {
+                if (val != null) {
+                    this.setAttribute('theme', val);
+                }
+            }
+
+            static get observedAttributes() { return ['totalcount', 'rpp', 'currentpage','theme'] };
+
+            attributeChangedCallback(attr, oldvalue, newValue) {
+                if (attr == "currentpage") {
+                    if (+newValue > +this.totalPages || +newValue <= 0) {
+                        this.currentPage = 1;
+                    }
+                }
+                this.setUpUI();
+            }
+            constructor() {
+                super();
+                this.initShadowDom();
+            }
+            initShadowDom() {
+                const mainDoc = currentScript.ownerDocument;
+                let shadowRoot = this.attachShadow({ mode: 'open' });
+                const t = mainDoc.querySelector("#rsat-popup-template");
+                const instance = t.content.cloneNode(true);
+                shadowRoot.appendChild(instance);
+                this.shadowDOM = shadowRoot;
+            }
+            addPageNumbers(pn) {
+                if (pn > 0 && pn <= this.totalPages && this.pageNumbers.indexOf(pn) < 0) {
+                    this.pageNumbers.push(pn);
+                }
+            }
+            
+            setUpUI() {
+                this.totalPages = Math.ceil(this.totalCount / this.rpp);
+                this.currentPageInt = +this.currentPage;
+                this.pageNumbers = [];
+                this.b1 = [];
+                this.b2 = [];
+                this.b3 = [];
+                this.addPageNumbers(1);
+                this.addPageNumbers(2);
+                this.addPageNumbers(this.currentPageInt - 1);
+                this.addPageNumbers(this.currentPageInt);
+                this.addPageNumbers(this.currentPageInt + 1);
+                this.addPageNumbers(this.totalPages - 1);
+                this.addPageNumbers(this.totalPages);
+
+                for (var i = 0; i < this.pageNumbers.length; i++) {
+                    if (i < 2) {
+                        this.b1.push(this.pageNumbers[i]);
+                    }
+                    if (i >= 2 && i < this.pageNumbers.length - 2) {
+                        this.b2.push(this.pageNumbers[i]);
+                    }
+                    if (i >= this.pageNumbers.length - 2) {
+                        this.b3.push(this.pageNumbers[i]);
+                    }
+                }
+
+                this.dot1 = true;
+                this.dot2 = true;
+
+                if ((this.b1[this.b1.length - 1] + 1) == this.b2[0]) {
+                    this.dot1 = false;
+                }
+                if (this.b2.length == 0) {
+                    this.dot2 = false;
+                }
+                if ((this.b2[this.b2.length - 1] + 1) == this.b3[0]) {
+                    this.dot2 = false;
+                }
+                this.draw();
+
+            }
+            draw() {
+                var pageHtml = "<h3> this has " + this.totalPages + "pages and current page is  " + this.currentPage + " </h3>";
+                var pageHeader = document.createElement("div");
+                pageHeader.classList = "pageHeader";
+
+                for (var i = 0; i < this.b1.length; i++) {
+                    var pageNoNode = this.addPageNumberNode(this.b1[i]);
+                    pageHeader.appendChild(pageNoNode);
+                }
+
+                if (this.dot1) {
+                    var pageNoNode = this.addPageDotNode('...');
+                    pageHeader.appendChild(pageNoNode);
+                }
+                for (var i = 0; i < this.b2.length; i++) {
+                    var pageNoNode = this.addPageNumberNode(this.b2[i]);
+                    pageHeader.appendChild(pageNoNode);
+                }
+                if (this.dot2) {
+                    var pageNoNode = this.addPageDotNode('...');
+                    pageHeader.appendChild(pageNoNode);
+                }
+                for (var i = 0; i < this.b3.length; i++) {
+                    var pageNoNode = this.addPageNumberNode(this.b3[i]);
+                    pageHeader.appendChild(pageNoNode);
+                }
+
+                var paginationElement = this.shadowDOM.querySelector('h3');
+                if (paginationElement) {
+                    paginationElement.innerHTML = '';
+                    paginationElement.append(pageHeader);
+                }
+
+
+                //this.shadowDOM.innerHTML = pageHtml;
+                //this.shadowDOM.append(pageHeader);
+            }
+            addPageNumberNode(pn) {
+                var pageNumberNode = document.createElement('button');
+                pageNumberNode.innerHTML = pn;
+                pageNumberNode.setAttribute('data-number', pn);
+
+                if (pn == this.currentPage) {
+                    pageNumberNode.disabled = true;
+
+                    if(this.theme){
+                         pageNumberNode.style.backgroundColor = this.theme;
+                    }else{
+                         pageNumberNode.style.backgroundColor = '#3f51b5';
+                    }
+
+                   
+                } else {
+                    pageNumberNode.disabled = false;
+                }
+
+                pageNumberNode.addEventListener('click', function (e) {
+                    var pageGoto = parseInt(e.path[0].getAttribute('data-number'));
+                    if (pageGoto > 0) {
+                        var evt = document.createEvent("HTMLEvents");
+                        evt.initEvent("pageChange", true, true);
+                        evt.currentPage = pageGoto;
+                        e.path[4].dispatchEvent(evt);
+                        e.path[4].setAttribute('currentpage', pageGoto);
+                    }
+                });
+                pageNumberNode.classList = "pagenodes";
+                return pageNumberNode;
+            }
+            addPageDotNode() {
+                var pageNumberNode = document.createElement('div');
+                pageNumberNode.innerHTML = '...';
+                pageNumberNode.classList = "dotnode";
+                return pageNumberNode;
+
+            }
+
+
+
+        }
+        window.customElements.define('rsat-pagination', rsatPagination);
+    </script>
